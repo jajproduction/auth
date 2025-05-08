@@ -1,6 +1,7 @@
 import { LoginRequest, RegisterRequest } from '@/types/auth'
 import prisma from '@/prisma/prisma'
 import bcrypt from 'bcryptjs'
+import { createSession } from '@/lib/session'
 
 export async function createUser(body: RegisterRequest) {
   const hashedPassword = await bcrypt.hash(body.password, 10)
@@ -38,6 +39,8 @@ export async function loginUser(body: LoginRequest) {
   if (user.verified === 0) {
     throw new AuthError('Your account is not verified', 403)
   }
+
+  await createSession(user.user_id)
 
   return user
 }

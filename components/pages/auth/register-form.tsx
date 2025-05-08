@@ -76,9 +76,7 @@ export default function RegisterForm({ className, ...props }: React.ComponentPro
       const response = await promise
       if (response.status === 201) {
         form.reset()
-        setTimeout(() => {
-          window.location.href = '/'
-        }, 3000) // 3 seconds delay
+        window.location.href = '/login'
       }
     } catch (error) {
       console.error(error)

@@ -67,6 +67,7 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
       const response = await promise
       if (response.status === 201) {
         form.reset()
+        window.location.href = '/dashboard'
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 403) {

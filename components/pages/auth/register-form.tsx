@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { IconEye, IconEyeClosed } from '@tabler/icons-react'
 
-export default function LoginForm({ className, ...props }: React.ComponentProps<'div'>) {
+export default function RegisterForm({ className, ...props }: React.ComponentProps<'div'>) {
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   return (
@@ -19,20 +19,21 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
           <form className='p-6 md:p-8'>
             <div className='flex flex-col gap-6'>
               <div className='flex flex-col items-center text-center'>
-                <h1 className='text-2xl font-bold'>Welcome back</h1>
-                <p className='text-muted-foreground text-balance'>Login to your Auth account</p>
+                <h1 className='text-2xl font-bold'>Create an account</h1>
+                <p className='text-muted-foreground text-balance'>
+                  To create your account, fill all the necessary information.
+                </p>
+              </div>
+              <div className='grid gap-3'>
+                <Label htmlFor='name'>Name</Label>
+                <Input id='name' type='text' placeholder='John Doe' required />
               </div>
               <div className='grid gap-3'>
                 <Label htmlFor='email'>Email</Label>
                 <Input id='email' type='email' placeholder='jay@auth.com' required />
               </div>
               <div className='grid gap-3'>
-                <div className='flex items-center'>
-                  <Label htmlFor='password'>Password</Label>
-                  <Link href='#' className='ml-auto text-sm underline-offset-2 hover:underline'>
-                    Forgot your password?
-                  </Link>
-                </div>
+                <Label htmlFor='password'>Password</Label>
                 <div className='relative'>
                   <Input type={showPassword ? 'text' : 'password'} />
                   <button
@@ -50,12 +51,12 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
                 </div>
               </div>
               <Button type='submit' className='w-full'>
-                Login
+                Register
               </Button>
               <div className='text-center text-sm'>
-                Don&apos;t have an account?{' '}
-                <Link href='/register' className='underline underline-offset-4'>
-                  Sign up
+                Already have an account?{' '}
+                <Link href='/' className='underline underline-offset-4'>
+                  Sign in
                 </Link>
               </div>
             </div>
